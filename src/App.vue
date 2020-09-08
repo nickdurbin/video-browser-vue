@@ -1,7 +1,7 @@
 <template>
   <div>
     <SearchBar @termChange="onTermChange"></SearchBar>
-    <VideoList></VideoList>
+    <VideoList :videos="videos"></VideoList>
   </div>
 </template>
 
@@ -9,8 +9,11 @@
 import axios from 'axios';
 import SearchBar from './components/SearchBar';
 import VideoList from './components/VideoList';
+import dotenv from 'dotenv'
 
-const API_KEY = 'AIzaSyAs4WeYLBiD7lWi0D_79jyoFboEJeedZmQ'
+dotenv.config()
+
+const API_KEY = process.env.VUE_APP_SECRET_KEY
 
 export default {
   name: 'App',
@@ -18,9 +21,12 @@ export default {
     SearchBar,
     VideoList
   },
+  data() {
+    return { videos: [] }
+  },
   methods: {
     onTermChange(searchTerm) {
-      axios.get('https://www.googlesapis.com/youtube/v3/search', {
+      axios.get('https://www.googleapis.com/youtube/v3/search', {
         params: {
           key: API_KEY,
           type: 'video',
@@ -28,7 +34,9 @@ export default {
           q: searchTerm
         }
       })
-      .then(res => console.log(res))
+      .then(res => {
+        this.videos = res.data.items;
+      })
       .catch(err => console.log(err, 'Error'))
     }
   }      

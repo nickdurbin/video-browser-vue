@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     onVideoSelect(video) {
-      this.$emit('videSelect', video);
+      this.$emit('videoSelect', video);
     },
   },
   props: {

@@ -1,8 +1,16 @@
 <template>
 <div class="container">
-  <SearchBar @termChange="onTermChange"></SearchBar>
-  <VideoDetail :video="selectedVideo" />
-  <VideoList @videSelect="onVideoSelect" :videos="videos"></VideoList>
+  <div class="search-display">
+    <SearchBar @termChange="onTermChange"></SearchBar>
+  </div>
+  <div class="video-wrapper">
+    <div class="video-display col-md-8">
+      <VideoDetail :video="selectedVideo" />
+    </div>
+    <div class="list-display col-md-4">
+      <VideoList @videoSelect="onVideoSelect" :videos="videos"></VideoList>
+    </div>
+  </div>
 </div>
 </template>
 
@@ -61,7 +69,24 @@ body {
 
 .container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   height: 100vh;
+}
+
+.video-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.search-display {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.list-display {
+  margin: 2%;
+  width: 100%;
 }
 </style>

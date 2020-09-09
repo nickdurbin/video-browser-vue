@@ -28,6 +28,7 @@ export default {
 li {
   display: flex;
   cursor: pointer;
+  border: 1px solid #4affa8;
   background: #28262e;
   color: #dfdee2;
 }

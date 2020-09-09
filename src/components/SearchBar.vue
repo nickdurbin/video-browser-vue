@@ -6,12 +6,14 @@
 </template>
 
 <script>
+import _ from 'lodash';
+
 export default {
   name: 'SearchBar',
   methods: {
-    onInput: function (event) {
+    onInput: _.debounce(function(event) {
       this.$emit('termChange', event.target.value);
-    },
+    }, 500)
   },
 };
 </script>

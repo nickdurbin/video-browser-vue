@@ -1,5 +1,6 @@
 <template>
 <div>
+  <img class="logo" src="../../public/assets/Slice 1.svg" />
   <input @input="onInput" placeholder="Search for content..." />
 </div>
 </template>
@@ -16,6 +17,11 @@ export default {
 </script>
 
 <style scoped>
+img {
+  width: 15%;
+  margin: 5%;
+}
+
 input {
   width: 60%;
   height: 3rem;
@@ -27,10 +33,14 @@ input {
 }
 
 input:focus {
-  outline: #4affa8;
+  outline: none;
+  border: 2px solid #4affa8;
 }
 
 div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   text-align: center;
   margin: 0 auto;

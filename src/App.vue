@@ -49,6 +49,7 @@ export default {
 <style>
 body {
   background-color: #28262e;
+  font-family: 'Poppins', sans-serif;
 }
 
 .container {
